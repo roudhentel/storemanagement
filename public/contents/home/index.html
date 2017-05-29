@@ -1,0 +1,115 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>R</b>DF</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+                    <!--<b>RedDragon</b>Farm-->
+                    <!--<img src="assets/logo_1.png" alt="RDF" style="height: 50px;">-->
+                </span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Control Sidebar Toggle Button -->
+                <li>
+                    <a href="#" ng-click="toggleRightSidebar();" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="assets/profile/avatar5.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>Jethro Monzada</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li><a><i class="fa fa-eye"></i><span>Overview</span></a></li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Branch Performance</span>
+                    <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a><i class="fa fa-money"></i> Revenue</a></li>
+                    <li><a><i class="fa fa-circle-o"></i> Transaction Count</a></li>
+                    <li><a><i class="fa fa-cube"></i> Volume</a></li>
+                    <li><a><i class="fa fa-circle-o"></i> ASP</a></li>
+                    <li><a><i class="fa fa-balance-scale"></i> Price Comparison</a></li>
+                    <li><a><i class="fa fa-circle-o"></i> Sales Mix</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-pie-chart"></i><span>Customer Demographics</span></a></li>
+            <li><a><i class="fa fa-image"></i><span>Gallery</span></a></li>
+            <li><a><i class="fa fa-line-chart"></i><span>Store Promotions</span></a></li>
+            <li><a><i class="fa fa-bar-chart"></i><span>Reports</span></a></li>
+            <li class="header">ADMINISTRATION</li>
+            <li><a href="#"><i class="fa fa-television text-red"></i> <span>Stores</span></a></li>
+            <li><a href="#"><i class="fa fa-user-circle text-yellow"></i> <span>Users</span></a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div ui-view class="view-container"></div>
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+    </div>
+    <strong>Copyright &copy; 2017 <a href="https://www.google.com.ph/?gws_rd=ssl#q=red+dragon+farm" target="_blank">Red Dragon Farm</a>.</strong>    All rights reserved.
+</footer>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!-- Home tab content -->
+        <div class="tab-pane" id="control-sidebar-home-tab">
+
+        </div>
+        <!-- /.tab-pane -->
+        <!-- Stats tab content -->
+        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+        <!-- /.tab-pane -->
+        <!-- Settings tab content -->
+        <div class="tab-pane" id="control-sidebar-settings-tab">
+            <a ui-sref="login" style="cursor: pointer">Logout</a>
+        </div>
+        <!-- /.tab-pane -->
+    </div>
+</aside>
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
