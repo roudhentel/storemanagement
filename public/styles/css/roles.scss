@@ -1,0 +1,146 @@
+.role-page {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+        height: 95%;
+        margin: 10px auto 0 auto;
+
+        .box-body {
+            height: 100%;
+            overflow: auto;
+
+            .role-commands {
+                display: flex;
+                height: 10%;
+                align-items: center;
+                min-height: 50px;
+                max-height: 70px;
+            }
+
+            .role-table {
+                display: flex;
+                height: 90%;
+                max-height: 700px;
+
+                table {
+                    width: 100%;
+                    thead {
+                        tr {
+                            th {
+                                padding: 5px;
+                                height: 40px;
+                                border: 1px solid #e0e0e0;
+                                text-align: center;
+
+                                &:nth-child(1) {
+                                    width: 100px;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                padding: 5px;
+                                height: 40px;
+                                border: 1px solid #e0e0e0;
+
+                                &:nth-child(1) {
+                                    text-align: center;
+
+                                    a {
+                                        &:not(:last-child) {
+                                            margin-right: 7px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+.role-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+
+    .data-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        label {
+            margin-right: 15px;
+        }
+    }
+
+    .permissions {
+        margin-top: 15px;
+
+        table {
+            width: 100%;
+            border: 1px solid #e8e8e8;
+
+            thead {
+                tr {
+                    th {
+                        height: 30px;
+                        border: 1px solid #e8e8e8;
+                        padding: 5px;
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        height: 40px;
+                        border-bottom: 1px dashed #e8e8e8;
+                        padding: 5px;
+
+                        &:nth-child(2) {
+                            span {
+                                display: inline-flex;
+                                width: 20%;
+                                margin-bottom: 5px;
+                            }
+                        }                 
+                    }
+                }
+            }
+        }
+    }
+
+    .box-footer {
+        margin-top: 10px;
+        text-align: right;
+        padding: 5px 0 0 0;
+        
+        md-progress-linear {
+            margin-bottom: 5px !important;
+
+            .md-container {
+                background-color: #c9e9c5;
+            }
+            .md-bar {
+                background-color: #00a65a;
+            }
+        }
+
+        button:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}

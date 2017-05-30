@@ -1,4 +1,4 @@
-var mainApp = angular.module("mainApp", ["ui.router"]);
+var mainApp = angular.module("mainApp", ["ui.router", "ngMaterial"]);
 
 mainApp.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
@@ -11,6 +11,11 @@ mainApp.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     .state('home.overview', {
         url: "/overview",
         templateUrl: "contents/overview/"
+    })
+    .state('home.roles', {
+        url: "/roles",
+        templateUrl: "contents/roles/",
+        controller: "rolesCtrl"
     })
     .state('login', {
         url: "/login",

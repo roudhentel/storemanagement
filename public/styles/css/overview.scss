@@ -79,6 +79,10 @@
         .data-row {
             display: flex;
             flex-direction: row;
+
+            span {
+                width: 30%;
+            }
         }
 
         .data-col {
