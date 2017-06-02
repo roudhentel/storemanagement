@@ -1,4 +1,4 @@
-mainApp.controller("mainCtrl", ($scope, $state) => {
+mainApp.controller("mainCtrl", ($scope, $state, $mdDialog) => {
     // $scope.state = $state;
 
     // console.log($scope.state);
@@ -21,4 +21,7 @@ mainApp.controller("mainCtrl", ($scope, $state) => {
         }
     }
 
+    $scope.cancel = function () {
+        $mdDialog.hide();
+    }
 });

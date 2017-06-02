@@ -1,71 +1,73 @@
 <dialog-template title="{{header}}" add-class="role-dialog">
-    <div class="data-row">
-        <label>Name:</label>
-        <input type="text" class="form-control" ng-model="role.Name" />
-    </div>
-    <div class="permissions">
-        <table>
-            <thead>
-                <tr>
-                    <th>Area</th>
-                    <th>Permission</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Stores</td>
-                    <td>
-                        <span><input type="checkbox" ng-model="role.Stores.View" />View</span>
-                        <span><input type="checkbox" ng-model="role.Stores.Add" />Add</span>
-                        <span><input type="checkbox" ng-model="role.Stores.Edit" />Edit</span>
-                        <span><input type="checkbox" ng-model="role.Stores.Delete" />Delete</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Users</td>
-                    <td>
-                        <span><input type="checkbox" ng-model="role.Users.View" />View</span>
-                        <span><input type="checkbox" ng-model="role.Users.Add" />Add</span>
-                        <span><input type="checkbox" ng-model="role.Users.Edit" />Edit</span>
-                        <span><input type="checkbox" ng-model="role.Users.Delete" />Delete</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Roles</td>
-                    <td>
-                        <span><input type="checkbox" ng-model="role.Roles.View" />View</span>
-                        <span><input type="checkbox" ng-model="role.Roles.Add" />Add</span>
-                        <span><input type="checkbox" ng-model="role.Roles.Edit" />Edit</span>
-                        <span><input type="checkbox" ng-model="role.Roles.Delete" />Delete</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Gallery</td>
-                    <td>
-                        <span><input type="checkbox" ng-model="role.Gallery.View" />View</span>
-                        <span><input type="checkbox" ng-model="role.Gallery.Add" />Add</span>
-                        <span><input type="checkbox" ng-model="role.Gallery.Edit" />Edit</span>
-                        <span><input type="checkbox" ng-model="role.Gallery.Delete" />Delete</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Branch Performance</td>
-                    <td>
-                        <span><input type="checkbox" ng-model="role.BranchPerformance.Revenue" />Revenue</span>
-                        <span><input type="checkbox" ng-model="role.BranchPerformance.TransactionCount" />Transaction Count</span>
-                        <span><input type="checkbox" ng-model="role.BranchPerformance.Volume" />Volume</span>
-                        <span><input type="checkbox" ng-model="role.BranchPerformance.ASP" />ASP</span>
-                        <span><input type="checkbox" ng-model="role.BranchPerformance.PriceComparison" />Price Comparison</span>
-                        <span><input type="checkbox" ng-model="role.BranchPerformance.SalesMix" />Sales Mix</span>
-                    </td>
-                </tr>
-            </tbody>
+    <form name="roleFormDialog">
+        <div class="data-row">
+            <label>Name:</label>
+            <input type="text" class="form-control" ng-model="role.Name" required />
+        </div>
+        <div class="permissions">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Area</th>
+                        <th>Permission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stores</td>
+                        <td>
+                            <span><input type="checkbox" ng-model="role.Stores.View" />View</span>
+                            <span><input type="checkbox" ng-model="role.Stores.Add" />Add</span>
+                            <span><input type="checkbox" ng-model="role.Stores.Edit" />Edit</span>
+                            <span><input type="checkbox" ng-model="role.Stores.Delete" />Delete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>
+                            <span><input type="checkbox" ng-model="role.Users.View" />View</span>
+                            <span><input type="checkbox" ng-model="role.Users.Add" />Add</span>
+                            <span><input type="checkbox" ng-model="role.Users.Edit" />Edit</span>
+                            <span><input type="checkbox" ng-model="role.Users.Delete" />Delete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Roles</td>
+                        <td>
+                            <span><input type="checkbox" ng-model="role.Roles.View" />View</span>
+                            <span><input type="checkbox" ng-model="role.Roles.Add" />Add</span>
+                            <span><input type="checkbox" ng-model="role.Roles.Edit" />Edit</span>
+                            <span><input type="checkbox" ng-model="role.Roles.Delete" />Delete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gallery</td>
+                        <td>
+                            <span><input type="checkbox" ng-model="role.Gallery.View" />View</span>
+                            <span><input type="checkbox" ng-model="role.Gallery.Add" />Add</span>
+                            <span><input type="checkbox" ng-model="role.Gallery.Edit" />Edit</span>
+                            <span><input type="checkbox" ng-model="role.Gallery.Delete" />Delete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Branch Performance</td>
+                        <td>
+                            <span><input type="checkbox" ng-model="role.BranchPerformance.Revenue" />Revenue</span>
+                            <span><input type="checkbox" ng-model="role.BranchPerformance.TransactionCount" />Transaction Count</span>
+                            <span><input type="checkbox" ng-model="role.BranchPerformance.Volume" />Volume</span>
+                            <span><input type="checkbox" ng-model="role.BranchPerformance.ASP" />ASP</span>
+                            <span><input type="checkbox" ng-model="role.BranchPerformance.PriceComparison" />Price Comparison</span>
+                            <span><input type="checkbox" ng-model="role.BranchPerformance.SalesMix" />Sales Mix</span>
+                        </td>
+                    </tr>
+                </tbody>
 
-        </table>
-    </div>
-    <div class="box-footer">
-        <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
-        <button type="button" class="btn" ng-click="cancel();">Cancel</button>
-        <button type="button" class="btn btn-success" ng-click="save($event);">Save</button>
-    </div>
+            </table>
+        </div>
+        <div class="box-footer">
+            <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+            <button type="button" class="btn" ng-click="cancel();">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="save($event, roleFormDialog.$valid);">Save</button>
+        </div>
+    </form>
 </dialog-template>

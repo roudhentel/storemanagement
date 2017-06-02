@@ -34,5 +34,6 @@ module.exports = mongoose.model('Role', new Schema({
         ASP: Boolean,
         PriceComparison: Boolean,
         SalesMix: Boolean
-    }
+    },
+    CreateDate: Date
 }));
