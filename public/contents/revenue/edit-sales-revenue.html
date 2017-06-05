@@ -1,0 +1,43 @@
+<dialog-template title="Edit Sales Revenue" add-class="edit-sales-revenue-dialog">
+    <div class="header">
+        <label>Year: </label> {{currdata.Year}}
+    </div>
+    <div class="legend">
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>January</th>
+                <th>February</th>
+                <th>March</th>
+                <th>April</th>
+                <th>May</th>
+                <th>June</th>
+                <th>July</th>
+                <th>August</th>
+                <th>September</th>
+                <th>October</th>
+                <th>November</th>
+                <th>December</th>
+            </tr>
+            <tr ng-repeat="i in currdata.Data">
+                <td><label ng-style="getColor($index)"></label><span>{{i.Description}}</span></td>
+                <td><input type="number" ng-model="i.January"></td>
+                <td><input type="number" ng-model="i.February"></td>
+                <td><input type="number" ng-model="i.March"></td>
+                <td><input type="number" ng-model="i.April"></td>
+                <td><input type="number" ng-model="i.May"></td>
+                <td><input type="number" ng-model="i.June"></td>
+                <td><input type="number" ng-model="i.July"></td>
+                <td><input type="number" ng-model="i.August"></td>
+                <td><input type="number" ng-model="i.September"></td>
+                <td><input type="number" ng-model="i.October"></td>
+                <td><input type="number" ng-model="i.November"></td>
+                <td><input type="number" ng-model="i.December"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary" ng-click="save();">Save</button> 
+        <button class="btn">Cancel</button>
+    </div>
+</dialog-template>

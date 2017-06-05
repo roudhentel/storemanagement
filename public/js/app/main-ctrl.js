@@ -24,4 +24,8 @@ mainApp.controller("mainCtrl", ($scope, $state, $mdDialog) => {
     $scope.cancel = function () {
         $mdDialog.hide();
     }
+
+    $scope.gbl = {
+        selectedStore: undefined
+    }
 });

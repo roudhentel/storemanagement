@@ -28,6 +28,11 @@ mainApp.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
         templateUrl: "contents/stores/",
         controller: "storesCtrl"
     })
+    .state('home.revenue', {
+        url: "/revenue",
+        templateUrl: "contents/revenue/",
+        controller: "revenueCtrl"
+    })
     .state('login', {
         url: "/login",
         templateUrl: "contents/login/",

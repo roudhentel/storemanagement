@@ -5,12 +5,25 @@ mainApp.controller("overviewCtrl", function ($scope, $http) {
         storename: ""
     }
     s.listStore = [];
-    s.selectedStore = undefined;
-
+    
     s.updateSearch = () => {
-        s.selectedStore = s.listStore.find(obj => obj.Details.Name.toLowerCase().indexOf(s.search.storename.toLowerCase()) > -1 ||
-        obj.Details.Id.toLowerCase().indexOf(s.search.storeno.toLowerCase()) > -1);
+        s.gbl.selectedStore = s.listStore.find(obj => obj.Details.Name.toLowerCase().indexOf(s.search.storename.toLowerCase()) > -1 &&
+            obj.Details.Id.toLowerCase().indexOf(s.search.storeno.toLowerCase()) > -1);
+
+        s.search = {
+            storeno: s.gbl.selectedStore.Details.Id,
+            storename: s.gbl.selectedStore.Details.Name
+        }    
     };
+
+    s.clearSearch = () => {
+        s.search = {
+            storeno: "",
+            storename: ""
+        }
+
+        $('#txtStoreNo').focus();
+    }
 
     s.getAllStores = () => {
         $http({

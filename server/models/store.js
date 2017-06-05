@@ -31,5 +31,8 @@ module.exports = mongoose.model('Store', new Schema({
     QuickFacts: [],
     MajorEstablishments: [],
     Competitors: [],
-    Community: []
+    Community: [],
+    Revenue: [],
+    SalesStat: [],
+    DailySales: []
 }));

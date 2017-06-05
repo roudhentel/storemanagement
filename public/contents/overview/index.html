@@ -1,113 +1,113 @@
 <div class="overview">
     <div class="search-div-input">
         <label>Store Number: </label>
-        <input type="text" class="form-control" placeholder="Store number" ng-model="search.storeno"/>
+        <input type="text" id="txtStoreNo" class="form-control" placeholder="Store number" ng-model="search.storeno"/>
         <label>Store Name: </label>
-        <input type="text" class="form-control" placeholder="Store name" ng-model="search.storename"/>
+        <input type="text" id="txtStoreName" class="form-control" placeholder="Store name" ng-model="search.storename"/>
     </div>
     <div class="search-div-command">
         <button class="btn btn-primary" ng-click="updateSearch()">Update Search</button>
         <button class="btn btn-warning">Edit</button>
-        <button class="btn">Cancel</button>
+        <button class="btn" ng-click="clearSearch();">Clear</button>
     </div>
     <div class="content-body">
         <div class="flex-row">
-            <div class="box" ng-if="selectedStore">
+            <div class="box" ng-if="gbl.selectedStore">
                 <!-- store details -->
                 <div class="box-body">
                     <div class="data-row">
                         <span>Address:</span>
                         <label>
-                            {{selectedStore.Details.Address1}} {{selectedStore.Details.Address2}}
-                            {{selectedStore.Details.City}} {{selectedStore.Details.Province}}
+                            {{gbl.selectedStore.Details.Address1}} {{gbl.selectedStore.Details.Address2}}
+                            {{gbl.selectedStore.Details.City}} {{gbl.selectedStore.Details.Province}}
                         </label>
                     </div>
                     <div class="data-row">
                         <div class="data-col">
                             <span>Area:</span>
-                            <label>{{selectedStore.Details.Area}}</label>
+                            <label>{{gbl.selectedStore.Details.Area}}</label>
                         </div>
                         <div class="data-col">
                             <span>Operating Hours:</span>
-                            <label>{{selectedStore.Details.OperatingHours}}</label>
+                            <label>{{gbl.selectedStore.Details.OperatingHours}}</label>
                         </div>
                     </div>
                     <div class="data-row">
                         <div class="data-col">
                             <span>Floor Area:</span>
-                            <label>{{selectedStore.Details.FloorArea}}</label>
+                            <label>{{gbl.selectedStore.Details.FloorArea}}</label>
                         </div>
                         <div class="data-col">
                             <span>Store Head:</span>
-                            <label>{{selectedStore.Details.StoreHead}}</label>
+                            <label>{{gbl.selectedStore.Details.StoreHead}}</label>
                         </div>
                     </div>
                     <div class="data-row">
                         <div class="data-col">
                             <span>Classification:</span>
-                            <label>{{selectedStore.Details.Classification}}</label>
+                            <label>{{gbl.selectedStore.Details.Classification}}</label>
                         </div>
                         <div class="data-col">
                             <span>Contact Number:</span>
-                            <label>{{selectedStore.Details.ContactNo}}</label>
+                            <label>{{gbl.selectedStore.Details.ContactNo}}</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="box" ng-if="selectedStore">
+            <div class="box" ng-if="gbl.selectedStore">
                 <!-- store details -->
                 <div class="box-body">
                     <div class="data-row">
                         <div class="data-col">
                             <span>Region:</span>
-                            <label>{{selectedStore.Info.Region}}</label>
+                            <label>{{gbl.selectedStore.Info.Region}}</label>
                         </div>
                         <div class="data-col">
                             <span>No. of Yrs:</span>
-                            <label>{{selectedStore.Info.NoOfYears}}</label>
+                            <label>{{gbl.selectedStore.Info.NoOfYears}}</label>
                         </div>
                     </div>
                     <div class="data-row">
                         <div class="data-col">
                             <span>Parking Slot:</span>
-                            <label>{{selectedStore.Info.ParkingSlot}}</label>
+                            <label>{{gbl.selectedStore.Info.ParkingSlot}}</label>
                         </div>
                         <div class="data-col">
                             <span>No. of Personel:</span>
-                            <label>{{selectedStore.Info.NoOfPersonel}}</label>
+                            <label>{{gbl.selectedStore.Info.NoOfPersonel}}</label>
                         </div>
                     </div>
                     <div class="data-row">
                         <div class="data-col">
                             <span>Type:</span>
-                            <label>{{selectedStore.Info.Type}}</label>
+                            <label>{{gbl.selectedStore.Info.Type}}</label>
                         </div>
                         <div class="data-col">
                             <span>Annniversary Date:</span>
-                            <label>{{selectedStore.Info.AnnivDate}}</label>
+                            <label>{{gbl.selectedStore.Info.AnnivDate}}</label>
                         </div>
                     </div>
                     <div class="data-row">
                         <div class="data-col">
                             <span>Delivery #:</span>
-                            <label>{{selectedStore.Info.DeliveryNo}}</label>
+                            <label>{{gbl.selectedStore.Info.DeliveryNo}}</label>
                         </div>
                         <div class="data-col">
                             <span>Delivery Service:</span>
-                            <label>{{selectedStore.Info.Delivery ? 'Yes' : 'No'}}</label>
+                            <label>{{gbl.selectedStore.Info.Delivery ? 'Yes' : 'No'}}</label>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="flex-row">
-            <div class="box" ng-if="selectedStore">
+            <div class="box" ng-if="gbl.selectedStore">
                 <div class="box-header with-border">
                     <h3 class="box-title">Quick Facts</h3>
                 </div>
                 <div class="box-body">
                     <ul>
-                        <li ng-repeat="qf in selectedStore.QuickFacts">{{qf}}</li>
+                        <li ng-repeat="qf in gbl.selectedStore.QuickFacts">{{qf}}</li>
                         <!--<li>Situated in a high residential but has medium to high commercialized area</li>
                         <li>2.53 Sq. Km. Total Land Area</li>
                         <li>5th largest in terms of population</li>
@@ -117,13 +117,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="box" ng-if="selectedStore">
+            <div class="box" ng-if="gbl.selectedStore">
                 <div class="box-header with-border">
                     <h3 class="box-title">Major Establishments</h3>
                 </div>
                 <div class="box-body">
                     <ul>
-                        <li ng-repeat="me in selectedStore.MajorEstablishments">{{me}}</li>
+                        <li ng-repeat="me in gbl.selectedStore.MajorEstablishments">{{me}}</li>
                         <!--<li>Sacred Heart Medical Center</li>
                         <li>Metrobank</li>
                         <li>Super8</li>
@@ -135,25 +135,25 @@
             </div>
         </div>
         <div class="flex-row">
-            <div class="box" ng-if="selectedStore">
+            <div class="box" ng-if="gbl.selectedStore">
                 <div class="box-header with-border">
                     <h3 class="box-title">Competitors</h3>
                 </div>
                 <div class="box-body">
                     <ul>
-                        <li ng-repeat="c in selectedStore.Competitors">{{c}}</li>
+                        <li ng-repeat="c in gbl.selectedStore.Competitors">{{c}}</li>
                         <!--<li>Talipapa</li>
                         <li>Savemore</li>-->
                     </ul>
                 </div>
             </div>
-            <div class="box" ng-if="selectedStore">
+            <div class="box" ng-if="gbl.selectedStore">
                 <div class="box-header with-border">
                     <h3 class="box-title">Community</h3>
                 </div>
                 <div class="box-body">
                     <ul>
-                        <li ng-repeat="cm in selectedStore.Community">{{cm}}</li>
+                        <li ng-repeat="cm in gbl.selectedStore.Community">{{cm}}</li>
                         <!--<li>Sacred Heart Medical Center</li>
                         <li>Metrobank</li>
                         <li>Super8</li>
