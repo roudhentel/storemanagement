@@ -24,24 +24,26 @@ function StoreRoutes() {
         });
     });
 
+    router.put('/addRevenue', function (req, res) {
+        var salesRev = req.body.salesRev;
+        var id = req.body.id;
+        Store.update({ _id: id },
+            { $push: { "Revenue": salesRev } }, function (err, store) {
+                if (err) res.status(500).json({ success: false });
+
+                res.status(200).json({ success: true, store: store });
+            });
+    });
+
     router.put('/updateRevenue', function (req, res) {
         var updatedStore = req.body;
-        Store.findById(updatedStore.Id, function (err, store) {
-            if (err) res.status(500).json({ success: false });
 
-            var s = store.Revenue.find(obj => obj.Year.toString() === updatedStore.Year.toString());
-            var idx = store.Revenue.indexOf(s);
-            store.Revenue[idx] = {
-                Year: updatedStore.Year,
-                Data: updatedStore.Data
-            }
-
-            store.save(function (_err, _store) {
-                if (_err) res.status(200).json({ success: false });
+        Store.update({ _id: updatedStore.Id, "Revenue.Year": updatedStore.Year },
+            { $set: { "Revenue.$.Data": updatedStore.Data } }, function (err, store) {
+                if (err) res.status(500).json({ success: false });
 
                 res.status(200).json({ success: true });
-            })
-        });
+            });
     });
 
     router.put('/edit', function (req, res) {

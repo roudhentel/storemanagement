@@ -17,6 +17,7 @@ document.write('<script src="contents/overview/controller.js"></script>');
 
 document.write('<script src="contents/revenue/controller.js"></script>');
 document.write('<script src="contents/revenue/edit-sales-revenue.js"></script>');
+document.write('<script src="contents/revenue/add-sales-revenue.js"></script>');
 
 // directives
 document.write('<script src="contents/dialog/directive.js"></script>');

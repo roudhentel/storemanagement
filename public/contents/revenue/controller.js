@@ -27,6 +27,15 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
         });
     }
 
+    s.add = (ev) => {
+        s.newHeader = "Add Sales Revenue";
+        dialogSvc.showDialog("addSalesRevCtrl", s, "contents/revenue/add-sales-revenue.html", false, "parent", ev).then(function (res) {
+            if (res) {
+
+            }
+        });
+    }
+
     var colors = ["green", "red", "blue"];
     s.getColor = (idx) => {
         return { 'background': colors[idx] };
@@ -102,7 +111,7 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
         setTimeout(() => {
             s.showSalesRevenueChart = true;
             s.$digest();
-            
+
             var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
             var lineChart = new Chart(lineChartCanvas);
             var lineChartOptions = areaChartOptions;

@@ -137,7 +137,7 @@ function ImportRoutes() {
                                     }
                                     ignore1stRow = false;
                                 });
-                                
+
                                 store.Revenue.push(newData);
                             }
 
@@ -217,6 +217,78 @@ function ImportRoutes() {
                     });
                 }
             })
+        }
+    });
+
+    router.post('/salesRevenue', upload.single('myFile'), function (req, res) {
+        if (!req.files) {
+            res.status(400).json({ success: false, message: "No file(s) were uploaded." });
+        } else {
+            let tFile = req.files.myFile;
+            let filename = "importedExcel" + dateFormat(new Date(), "yyyymmddhhMMssTT") + ".xlsx";
+            tFile.mv('./server/files/' + filename, function (err) {
+                if (err) {
+                    res.status(500).json({
+                        success: false,
+                        message: err
+                    });
+                } else {
+                    let wb = new exceljs.Workbook();
+
+                    wb.xlsx.readFile('./server/files/' + filename).then(function (result, error) {
+                        if (!error) {
+                            let ws = wb.getWorksheet("SalesRevenue");
+                            let ignore1stRow = true;
+                            if (ws) {
+                                var newData = {
+                                    Year: "",
+                                    Data: []
+                                }
+                                ws.eachRow(function (row, rowno) {
+                                    if (!ignore1stRow) {
+                                        newData.Year = newData.Year === "" ? (row.values[1] || "") : newData.Year;
+
+                                        newData.Data.push({
+                                            Description: row.values[2] || "",
+                                            January: row.values[3] || "",
+                                            February: row.values[4] || "",
+                                            March: row.values[5] || "",
+                                            April: row.values[6] || "",
+                                            May: row.values[7] || "",
+                                            June: row.values[8] || "",
+                                            July: row.values[9] || "",
+                                            August: row.values[10] || "",
+                                            September: row.values[11] || "",
+                                            October: row.values[12] || "",
+                                            November: row.values[13] || "",
+                                            December: row.values[14] || ""
+                                        });
+                                    }
+                                    ignore1stRow = false;
+                                });
+
+                                // remove file
+                                fs.unlink('./server/files/' + filename, (err) => {
+                                    if (err) {
+                                        console.log(err);
+                                    } else {
+                                        console.log("deleted file: " + filename);
+                                    }
+                                });
+
+                                res.status(200).json({
+                                    success: true,
+                                    row: newData
+                                });
+                            }
+                        } else {
+                            res.status(500).json({
+                                success: false
+                            });
+                        }
+                    });
+                }
+            });
         }
     });
 

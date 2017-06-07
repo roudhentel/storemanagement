@@ -1,5 +1,5 @@
 <div class="revenue-page">
-    <div class="box box-info chart ">
+    <div class="box box-info chart " ng-if="gbl.selectedStore">
         <div class="box-header with-border">
             <h3 class="box-title">Sales Revenue</h3>
 
@@ -14,7 +14,7 @@
                 <div class="commands">
                     <label>Year: </label><select class="form-control" ng-model="selectedYear" ng-options="y for y in years" ng-change="changeYear()"></select>
                     <button class="btn btn-warning" ng-click="edit($event);">Edit</button>
-                    <button class="btn btn-success">Add</button>
+                    <button class="btn btn-success" ng-click="add($event);">Add</button>
                 </div>
                 <canvas id="lineChart" style="height:250px" ng-if="showSalesRevenueChart"></canvas>
                 <!--<div id="legendDiv"></div>-->

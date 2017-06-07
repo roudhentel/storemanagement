@@ -1,0 +1,50 @@
+<dialog-template title="{{header}}" add-class="edit-sales-revenue-dialog">
+    <form id="addSaleRevFormDialog">
+        <div class="data-row" ng-show="!salesRev">
+            <input type="file" class="form-control" onchange="angular.element(this).scope().readExcelFile();" ng-if="!salesRev"/>
+        </div>
+        <div class="yearLabel" ng-show="salesRev">
+            <label>Year : </label> {{salesRev.Year}}
+        </div>
+        <div class="legend" ng-show="salesRev">
+            <table>
+                <tr>
+                    <th>Description</th>
+                    <th>January</th>
+                    <th>February</th>
+                    <th>March</th>
+                    <th>April</th>
+                    <th>May</th>
+                    <th>June</th>
+                    <th>July</th>
+                    <th>August</th>
+                    <th>September</th>
+                    <th>October</th>
+                    <th>November</th>
+                    <th>December</th>
+                </tr>
+                <tr ng-repeat="i in salesRev.Data">
+                    <td><label ng-style="getColor($index)"></label><span>{{i.Description}}</span></td>
+                    <td><input type="number" ng-model="i.January"></td>
+                    <td><input type="number" ng-model="i.February"></td>
+                    <td><input type="number" ng-model="i.March"></td>
+                    <td><input type="number" ng-model="i.April"></td>
+                    <td><input type="number" ng-model="i.May"></td>
+                    <td><input type="number" ng-model="i.June"></td>
+                    <td><input type="number" ng-model="i.July"></td>
+                    <td><input type="number" ng-model="i.August"></td>
+                    <td><input type="number" ng-model="i.September"></td>
+                    <td><input type="number" ng-model="i.October"></td>
+                    <td><input type="number" ng-model="i.November"></td>
+                    <td><input type="number" ng-model="i.December"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer">
+            <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+            <button type="button" class="btn" ng-click="cancel();">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="loadExcelFile();">Load Excel</button>
+            <button type="submit" class="btn btn-success" ng-click="saveSalesRev();">Save</button>
+        </div>
+    </form>
+</dialog-template>
