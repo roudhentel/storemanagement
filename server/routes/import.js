@@ -44,26 +44,18 @@ function ImportRoutes() {
                                     store.Details.OperatingHours = row.values[10];
                                     store.Details.StoreHead = row.values[11];
                                     store.Details.ContactNo = row.values[12];
+                                    store.Info.Region = row.values[13];
+                                    store.Info.ParkingSlot = row.values[14];
+                                    store.Info.Type = row.values[15];
+                                    store.Info.DeliveryNo = row.values[16];
+                                    store.Info.NoOfYears = row.values[17];
+                                    store.Info.NoOfPersonel = row.values[18];
+                                    store.Info.AnnivDate = row.values[19];
+                                    store.Info.Delivery = row.values[20];
+                                    store.Info.Location = row.values[21];
                                 }
                             }
-
-                            ws = wb.getWorksheet("Info");
-                            if (ws) {
-                                row = ws.getRow(2);
-                                if (row) {
-                                    store.Info.Region = row.values[1];
-                                    store.Info.ParkingSlot = row.values[2];
-                                    store.Info.Type = row.values[3];
-                                    store.Info.DeliveryNo = row.values[4];
-                                    store.Info.NoOfYears = row.values[5];
-                                    store.Info.NoOfPersonel = row.values[6];
-                                    store.Info.AnnivDate = row.values[7];
-                                    store.Info.Delivery = row.values[8];
-                                    store.Info.Longitude = row.values[9];
-                                    store.Info.Latitude = row.values[10];
-                                }
-                            }
-
+                            
                             let ignore1stRow = true;
                             ws = wb.getWorksheet("QuickFacts");
                             if (ws) {

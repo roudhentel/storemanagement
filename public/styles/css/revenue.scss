@@ -1,8 +1,7 @@
 .revenue-page {
-    display: flex;
-    flex-direction: column;
     height: 100%;
     width: 100%;
+    overflow: auto;
 
     .chart {
         width: 95%;
@@ -66,10 +65,93 @@
             }
         }
     }
+
+    .daily-sales {
+        width: 95%;
+        margin: 10px auto 0 auto;
+
+        .daily-sales-body {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            margin: 10px auto;
+
+            .part-1 {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 30%;
+
+                .remarks, .avg-daily-sales {
+                    height: 50%;
+                    width: 100%;
+                }
+
+                .avg-daily-sales .box-body {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    label {
+                        font-size: 60px;
+                        font-weight: normal;
+                    }
+
+                    div.label {
+                        background-color: #00c56b;
+                        border-radius: 5px;
+                        height: 32px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .part-2 {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 70%;
+
+                .line-chart, .bar-chart {
+                    height: 50%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    canvas {
+                        width: 100% !important;
+                    }
+                }
+
+                .line-chart {
+                    margin-left: 10px;
+                    .search {
+                        display: flex;
+                        flex-direction: row;
+
+                        label {
+                            margin: 0 5px;
+                        }
+
+                        button {
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
 }
 
 
-.edit-sales-revenue-dialog {
+.edit-sales-revenue-dialog, .add-sales-revenue-dialog {
     div.legend table {
         width: 100%;
         margin-top: 15px;

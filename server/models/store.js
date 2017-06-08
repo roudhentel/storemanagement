@@ -14,9 +14,7 @@ module.exports = mongoose.model('Store', new Schema({
         Classification: String,
         OperatingHours: String,
         StoreHead: String,
-        ContactNo: String
-    },
-    Info: {
+        ContactNo: String,
         Region: String,
         ParkingSlot: String,
         Type: String,
@@ -25,8 +23,7 @@ module.exports = mongoose.model('Store', new Schema({
         NoOfPersonel: Number,
         AnnivDate: Date,
         Delivery: Boolean,
-        Longitude: Number,
-        Latitude: Number
+        Location: String
     },
     QuickFacts: [],
     MajorEstablishments: [],

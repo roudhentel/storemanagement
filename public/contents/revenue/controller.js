@@ -6,14 +6,27 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     s.selIdx = -1;
     s.showSalesRevenueChart = true;
 
-    var currYear = new Date().getFullYear();
+    var currDate = new Date();
+    var currYear = currDate.getFullYear();
+    var currMonth = currDate.getMonth();
+
+    var monthStart = new Date(currYear, currMonth, 1);
+    var monthEnd = new Date(currYear, currMonth + 1, 0);
+
+    console.log(monthStart);
+    console.log(monthEnd);
+
+    s.dailySalesFromDate = monthStart;
+    s.dailySalesToDate = monthEnd;
+
     s.years = [];
     s.selectedYear = currYear;
     for (let x = 2000; x < currYear + 2; x++) {
         s.years.push(x);
     }
 
-    s.changeYear = () => {
+    s.changeYear = (year) => {
+        s.selectedYear = year;
         drawLineChart();
     }
 
@@ -34,6 +47,10 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
 
             }
         });
+    }
+
+    s.searchDailySales = () => {
+
     }
 
     var colors = ["green", "red", "blue"];
@@ -111,16 +128,90 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
         setTimeout(() => {
             s.showSalesRevenueChart = true;
             s.$digest();
+            var lc = $("#lineChart").get(0);
+            if (lc) {
+                var lineChartCanvas = lc.getContext("2d");
+                var lineChart = new Chart(lineChartCanvas);
+                var lineChartOptions = areaChartOptions;
+                lineChartOptions.datasetFill = false;
+                var newChart = lineChart.Line(areaChartData, lineChartOptions);
+            }
+            //document.getElementById('legendDiv').innerHTML = newChart.generateLegend();
+        }, 10);
+    }
 
-            var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
-            var lineChart = new Chart(lineChartCanvas);
-            var lineChartOptions = areaChartOptions;
-            lineChartOptions.datasetFill = false;
-            var newChart = lineChart.Line(areaChartData, lineChartOptions);
+    s.searchDailySales = (fromD, toD) => {
+        // s.dailySalesFromDate = fromD;
+        // s.dailySalesToDate = toD;
+
+        drawDailySalesLineChart();
+    }
+
+    var drawDailySalesLineChart = () => {
+        var dailySales = [];
+        var datas = [];
+        var labels = []
+        if (s.gbl.selectedStore) {
+            s.gbl.selectedStore.DailySales.forEach((obj, idx) => {
+                var d = new Date(obj.Date)
+                var newd = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+                if (newd >= s.dailySalesFromDate && newd <= s.dailySalesToDate) {
+                    dailySales.push(obj);
+                }
+            });
+
+            if (dailySales) {
+                var data = [];
+                dailySales.forEach((obj, idx) => {
+                    data.push(obj.TotalSales);
+                    var ndate = new Date(obj.Date);
+                    ndate = ndate.toString().substr(4, 6).replace(' ', '-');
+                    labels.push(ndate);
+                });
+
+
+                var d = {
+                    label: "Testing",
+                    fillColor: colors[0],
+                    strokeColor: colors[0],
+                    pointColor: colors[0],
+                    pointStrokeColor: colors[0],
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: colors[0],
+                    data: data
+                }
+                datas.push(d);
+
+            }
+        }
+
+
+        var areaChartData = {
+            labels: labels,
+            datasets: datas
+        };
+
+
+        //-------------
+        //- LINE CHART -
+        //--------------
+        s.showSalesRevenueChart = false;
+        setTimeout(() => {
+            s.showSalesRevenueChart = true;
+            s.$digest();
+
+            var srlc = $("#salesRevLineChart").get(0);
+            if (srlc) {
+                var lineChartCanvas = srlc.getContext("2d");
+                var lineChart = new Chart(lineChartCanvas);
+                var lineChartOptions = areaChartOptions;
+                lineChartOptions.datasetFill = false;
+                lineChart.Line(areaChartData, lineChartOptions);
+            }
             //document.getElementById('legendDiv').innerHTML = newChart.generateLegend();
         }, 10);
     }
 
     drawLineChart();
-
+    drawDailySalesLineChart();
 });

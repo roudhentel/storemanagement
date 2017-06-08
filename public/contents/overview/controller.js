@@ -48,4 +48,6 @@ mainApp.controller("overviewCtrl", function ($scope, $http) {
 
     // fix display
     $.AdminLTE.layout.fix();
+    // close right side bar
+    $.AdminLTE.controlSidebar.close();
 });

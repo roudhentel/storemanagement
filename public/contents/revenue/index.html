@@ -12,7 +12,8 @@
         <div class="box-body">
             <div class="chart">
                 <div class="commands">
-                    <label>Year: </label><select class="form-control" ng-model="selectedYear" ng-options="y for y in years" ng-change="changeYear()"></select>
+                    <label>Year: </label><select class="form-control" ng-model="selectedYear" ng-options="y for y in years"
+                        ng-change="changeYear(selectedYear)"></select>
                     <button class="btn btn-warning" ng-click="edit($event);">Edit</button>
                     <button class="btn btn-success" ng-click="add($event);">Add</button>
                 </div>
@@ -51,6 +52,72 @@
                             <td>{{i.December | number: 2}}</td>
                         </tr>
                     </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <div class="box box-info daily-sales">
+        <div class="box-header with-border">
+            <h3 class="box-title">Daily Sales</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <!--<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+            </div>
+        </div>
+        <div class="box-body daily-sales-body">
+            <div class="part-1">
+                <div class="remarks">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Remarks</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <!--<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="avg-daily-sales">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Average Daily Sales</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <!--<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <label>31, 592</label>
+                            <div class="label">
+                                February 2017
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            <div class="part-2">
+                <div class="line-chart">
+                    <div class="search">
+                        <label>From Date: </label>
+                        <input type="date" ng-model="dailySalesFromDate">
+                        <label>TO Date: </label>
+                        <input type="date" ng-model="dailySalesToDate">
+                        <button type="button" class="btn btn-primary" ng-click="searchDailySales();">Search</button>
+                    </div>
+
+                    <canvas id="salesRevLineChart" style="height:250px" ng-if="showSalesRevenueChart"></canvas>
+                </div>
+                <div class="bar-chart">
+
                 </div>
             </div>
         </div>
