@@ -33,6 +33,11 @@ mainApp.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
         templateUrl: "contents/revenue/",
         controller: "revenueCtrl"
     })
+    .state('home.gallery', {
+        url: "/gallery",
+        templateUrl: "contents/gallery/",
+        controller: "galleryCtrl"
+    })
     .state('login', {
         url: "/login",
         templateUrl: "contents/login/",

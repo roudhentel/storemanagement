@@ -19,5 +19,9 @@ document.write('<script src="contents/revenue/controller.js"></script>');
 document.write('<script src="contents/revenue/edit-sales-revenue.js"></script>');
 document.write('<script src="contents/revenue/add-sales-revenue.js"></script>');
 
+document.write('<script src="contents/gallery/controller.js"></script>');
+document.write('<script src="contents/gallery/view-image.js"></script>');
+document.write('<script src="contents/gallery/album-dialog.js"></script>');
+
 // directives
 document.write('<script src="contents/dialog/directive.js"></script>');

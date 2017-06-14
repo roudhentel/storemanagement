@@ -1,0 +1,35 @@
+<div class="gallery-page">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Gallery</h3>
+        </div>
+        <div class="box-header commands">
+            <label>Search :</label>
+            <input type="text" ng-model="txtSearch">
+            <button class="btn btn-success" ng-click="addNewAlbum($event);">Add New Album</button>
+        </div>
+        <div class="box-body">
+            <div class="box album collapsed-box" ng-repeat="alb in listAlbum | filter: {name: txtSearch}">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{alb.name}}</h3> <i class="fa fa-pencil" ng-click="editAlbum(alb, $event)"></i>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body" style="display: none;">
+                    <div class="img-box" ng-repeat="img in alb.files">
+                        <img ng-src="{{img.path}}" alt="" img-show-loading>
+                        <div class="img-loading"><img class="loading" src="assets/gears.svg"></div>
+                        <div class="img-tools">
+                            <button type="button" class="btn btn-primary" ng-click="viewImage(img, $event);"><i class="fa fa-eye"></i> View</button>
+                            <button type="button" class="btn btn-danger" ng-click="deleteImage(alb, $index, $event);"><i class="fa fa-trash"></i> Delete</button>
+                        </div>
+                        <div class="file-name">{{img.filename}}</div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</div>

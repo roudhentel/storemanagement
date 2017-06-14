@@ -8,7 +8,7 @@ var busboy = require('connect-busboy');
 var fileUpload = require('express-fileupload');
 
 let config = require('./server/db/config');
-let PORT = process.env.port || 3000;
+let PORT = process.env.port || 3100;
 let http = require('http').Server(app);
 
 // for file upload
@@ -49,6 +49,9 @@ app.use('/api/import', importRoute);
 // store route
 let storeRoute = require('./server/routes/store');
 app.use('/api/store', storeRoute);
+
+let fileSystemRoute = require('./server/routes/filesystem');
+app.use('/api/filesystem', fileSystemRoute);
 
 // start with index.html
 app.get('/', (req, res) => {
