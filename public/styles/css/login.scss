@@ -3,7 +3,6 @@
     height: 100%;
     width: 100%;
     margin-bottom: 10px;
-    font-family: Calibri;
 
     .login-frame {
         display: flex;
@@ -49,7 +48,7 @@
                     width: auto;
                     border: 0;
                     margin-left: 5px;
-                    font-weight: bold;
+                    font-weight: normal;
                     color: #545454;
                 }
 
@@ -75,7 +74,6 @@
 
             button {
                 width: 100%;
-                font-family: calibri;
                 font-size: 21px;
                 color: #FFF;
             }

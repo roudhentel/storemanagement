@@ -22,6 +22,8 @@ mainApp.controller("overviewCtrl", function ($scope, $http) {
             storename: ""
         }
 
+        s.gbl.selectedStore = undefined;
+
         $('#txtStoreNo').focus();
     }
 

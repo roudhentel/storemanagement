@@ -1,15 +1,18 @@
 <div class="overview">
-    <div class="search-div-input">
-        <label>Store Number: </label>
-        <input type="text" id="txtStoreNo" class="form-control" placeholder="Store number" ng-model="search.storeno"/>
-        <label>Store Name: </label>
-        <input type="text" id="txtStoreName" class="form-control" placeholder="Store name" ng-model="search.storename"/>
-    </div>
-    <div class="search-div-command">
-        <button class="btn btn-primary" ng-click="updateSearch()">Update Search</button>
-        <button class="btn btn-warning">Edit</button>
-        <button class="btn" ng-click="clearSearch();">Clear</button>
-    </div>
+    <form name="formSearch">
+        <div class="search-div-input">
+            <label>Store Number: </label>
+            <input type="text" id="txtStoreNo" class="form-control" placeholder="Store number" ng-model="search.storeno" />
+            <label>Store Name: </label>
+            <input type="text" id="txtStoreName" class="form-control" placeholder="Store name" ng-model="search.storename" />
+        </div>
+        <div class="search-div-command">
+            <button class="btn btn-primary" type="submit" ng-click="updateSearch()">Update Search</button>
+            <button class="btn btn-warning">Edit</button>
+            <button class="btn" ng-click="clearSearch();">Clear</button>
+        </div>
+    </form>
+
     <div class="content-body">
         <div class="flex-row">
             <div class="box" ng-if="gbl.selectedStore">

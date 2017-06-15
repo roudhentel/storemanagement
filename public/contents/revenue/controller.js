@@ -2,6 +2,10 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     var s = $scope;
     var dialogSvc = new Dialog();
 
+    // Chart.defaults.global = {
+    //     defaultFontFamily: "Georgia"
+    // }
+
     s.selData = undefined;
     s.selIdx = -1;
     s.showSalesRevenueChart = true;
@@ -88,6 +92,13 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
             yAxes: [{
                 stacked: true
             }]
+        },
+        options: {
+            legend: {
+                labels: {
+                    fontColor: 'red'
+                }
+            }
         }
     };
 
