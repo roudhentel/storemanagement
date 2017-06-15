@@ -13,6 +13,9 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     var monthStart = new Date(currYear, currMonth, 1);
     var monthEnd = new Date(currYear, currMonth + 1, 0);
 
+    s.listDailySale = [];
+    s.avgDailySales = 0;
+
     s.dailySalesFromDate = monthStart;
     s.dailySalesToDate = monthEnd;
 
@@ -152,7 +155,7 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     }
 
     var drawDailySalesLineChart = () => {
-        var dailySales = [];
+        s.listDailySale = [];
         var datas = [];
         var labels = []
         if (s.gbl.selectedStore) {
@@ -160,13 +163,13 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
                 var d = new Date(obj.Date)
                 var newd = new Date(d.getFullYear(), d.getMonth(), d.getDate());
                 if (newd >= s.dailySalesFromDate && newd <= s.dailySalesToDate) {
-                    dailySales.push(obj);
+                    s.listDailySale.push(obj);
                 }
             });
 
-            if (dailySales) {
+            if (s.listDailySale.length > 0) {
                 var data = [];
-                dailySales.forEach((obj, idx) => {
+                s.listDailySale.forEach((obj, idx) => {
                     data.push(obj.TotalSales);
                     var ndate = new Date(obj.Date);
                     ndate = ndate.toString().substr(4, 6).replace(' ', '-');

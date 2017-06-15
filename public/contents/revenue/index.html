@@ -79,7 +79,9 @@
                             </div>
                         </div>
                         <div class="box-body">
-
+                            <ul class="list-remarks">
+                                <li ng-repeat="r in listDailySale">{{r.Date | date: 'dd-MMM-yy'}} | {{r.Remarks}}</li>
+                            </ul>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -95,7 +97,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <label>31, 592</label>
+                            <label>{{avgDailySales}}</label>
                             <div class="label">
                                 February 2017
                             </div>
