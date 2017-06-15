@@ -13,9 +13,6 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     var monthStart = new Date(currYear, currMonth, 1);
     var monthEnd = new Date(currYear, currMonth + 1, 0);
 
-    console.log(monthStart);
-    console.log(monthEnd);
-
     s.dailySalesFromDate = monthStart;
     s.dailySalesToDate = monthEnd;
 
@@ -28,6 +25,11 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     s.changeYear = (year) => {
         s.selectedYear = year;
         drawLineChart();
+    }
+
+    s.getYearDescription = (year) => {
+        var prevYear = parseInt(s.selectedYear) - 1;
+        return year === s.selectedYear ? 'Actual' : year === prevYear ? 'Last Year' : 'Budget';
     }
 
     s.edit = (ev) => {
@@ -49,12 +51,10 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
         });
     }
 
-    s.searchDailySales = () => {
-
-    }
-
     var colors = ["green", "red", "blue"];
-    s.getColor = (idx) => {
+    s.getColor = (year) => {
+        var prevYear = parseInt(s.selectedYear) - 1;
+        var idx = year === s.selectedYear ? 0 : year === prevYear ? 2 : 1
         return { 'background': colors[idx] };
     }
 
@@ -91,19 +91,23 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
     var drawLineChart = () => {
         var datas = [];
         if (s.gbl.selectedStore) {
-            s.selData = s.gbl.selectedStore.Revenue.find(obj => obj.Year.toString() === s.selectedYear.toString());
+            var prevYear = parseInt(s.selectedYear) - 1;
+            var nextYear = parseInt(s.selectedYear) + 1;
+            s.selData = s.gbl.selectedStore.Revenue.filter(obj => obj.Year.toString() === s.selectedYear.toString()
+                || obj.Year.toString() === prevYear.toString() || obj.Year.toString() === nextYear.toString());
             s.selIdx = s.gbl.selectedStore.Revenue.indexOf(s.selData);
 
             if (s.selData) {
-                s.selData.Data.forEach((obj, idx) => {
+                s.selData.forEach((obj, idx) => {
+                    var colorIdx = obj.Year === s.selectedYear ? 0 : obj.Year === prevYear ? 2 : 1
                     var d = {
-                        label: obj.Description,
-                        fillColor: colors[idx],
-                        strokeColor: colors[idx],
-                        pointColor: colors[idx],
-                        pointStrokeColor: colors[idx],
+                        label: obj.Year === s.selectedYear ? 'Actual' : obj.Year === prevYear ? 'Last Year' : 'Budget',
+                        fillColor: colors[colorIdx],
+                        strokeColor: colors[colorIdx],
+                        pointColor: colors[colorIdx],
+                        pointStrokeColor: colors[colorIdx],
                         pointHighlightFill: "#fff",
-                        pointHighlightStroke: colors[idx],
+                        pointHighlightStroke: colors[colorIdx],
                         data: [obj.January, obj.February, obj.March,
                         obj.April, obj.May, obj.June, obj.July,
                         obj.August, obj.September, obj.October,
@@ -152,7 +156,7 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
         var datas = [];
         var labels = []
         if (s.gbl.selectedStore) {
-            s.gbl.selectedStore.DailySales.forEach((obj, idx) => {
+            s.gbl.selectedStore.Sales.forEach((obj, idx) => {
                 var d = new Date(obj.Date)
                 var newd = new Date(d.getFullYear(), d.getMonth(), d.getDate());
                 if (newd >= s.dailySalesFromDate && newd <= s.dailySalesToDate) {
@@ -195,9 +199,7 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
         //-------------
         //- LINE CHART -
         //--------------
-        s.showSalesRevenueChart = false;
         setTimeout(() => {
-            s.showSalesRevenueChart = true;
             s.$digest();
 
             var srlc = $("#salesRevLineChart").get(0);

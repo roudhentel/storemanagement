@@ -37,9 +37,18 @@
                 .box-header {
                     background-color: #3c8dbc;
                     color: #FFF;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 20px;
 
-                    .btn-box-tool {
-                        color: #FFF;
+                    .box-tools {
+                        right: 0;
+                        left: 0;
+                        width: 0;
+
+                        .btn-box-tool {
+                            color: #FFF;   
+                        }
                     }
 
                     .fa-pencil {

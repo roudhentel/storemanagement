@@ -16,7 +16,7 @@ mainApp.controller("storesCtrl", function ($scope, $http, Dialog) {
         s.showStoreDialog(ev, "add")
             .then((res) => {
                 if (res) {
-                    s.listStore.push(res);
+                    s.listStore.push.apply(s.listStore, res);
                 }
             })
     }

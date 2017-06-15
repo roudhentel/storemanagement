@@ -32,7 +32,7 @@ mainApp.controller("storeDialogCtrl", function ($scope, $http, $mdDialog, Dialog
             success: function (res) {
                 if (res.success) {
                     dialogSvc.showAlert("Information", "Successfully added.", "Ok", true, "parent", ev).then(() => {
-                        $mdDialog.hide(res.store);
+                        $mdDialog.hide(res.listStore);
                     });
                 } else {
                     console.log(res);

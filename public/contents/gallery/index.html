@@ -11,8 +11,9 @@
         <div class="box-body">
             <div class="box album collapsed-box" ng-repeat="alb in listAlbum | filter: {name: txtSearch}">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{{alb.name}}</h3> <i class="fa fa-pencil" ng-click="editAlbum(alb, $event)"></i>
-
+                    <h3 class="box-title">{{alb.name}}</h3> 
+                    <i class="fa fa-pencil" ng-click="editAlbum(alb, $event)"></i> 
+                    <i class="fa fa-plus-circle" ng-click="addPictures($event, alb)"></i> 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                     </div>

@@ -2,9 +2,60 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var rimraf = require('rimraf');
+let multer = require('multer');
 
 function FileSystemRoutes() {
     var router = express.Router();
+    let upload = multer({ dest: './server/files/' });
+
+    router.post("/addPictures", upload.single('myFile'), function (request, response) {
+        if (!request.files) {
+            response.status(400).json({ success: false, message: "No file(s) were uploaded." });
+        } else {
+            let tFile = request.files.myFile;
+            var storeId = request.query.storeId,
+                albumName = request.query.albumName;
+
+            var pathLocation = './public/assets/gallery/' + storeId + "/" + albumName + "/";
+            var returnLocation = 'assets/gallery/' + storeId + "/" + albumName + "/";
+            if (tFile instanceof Array) {
+                // multiple files
+                var files = [];
+                tFile.forEach(f => {
+                    f.mv(pathLocation + f.name, function (err) {
+                        if (err) {
+                            response.status(200).json({
+                                success: false,
+                                details: err
+                            });
+                        }
+                    });
+
+                    files.push({ path: returnLocation + f.name, filename: f.name });
+                });
+
+                response.status(200).json({
+                    success: true,
+                    files: files
+                });
+            } else if (tFile instanceof Object) {
+                // single file
+                tFile.mv(pathLocation + tFile.name, function (err) {
+                    if (err) {
+                        response.status(200).json({
+                            success: false,
+                            details: err
+                        });
+                    } else {
+                        response.status(200).json({
+                            success: true,
+                            files: [{ path: returnLocation + tFile.name, filename: tFile.name }]
+                        });
+                    }
+                });
+            }
+        }
+    });
 
     router.get("/getAll", function (request, response) {
         var _ret = [];
@@ -67,6 +118,9 @@ function FileSystemRoutes() {
         var albumname = request.body.albumname
         var storeId = request.body.storeId;
         var folderpath = "./public/assets/gallery/" + storeId + "/" + albumname;
+        if (!fs.existsSync("./public/assets/gallery/" + storeId)) {
+            fs.mkdirSync("./public/assets/gallery/" + storeId);
+        }
         fs.mkdir(folderpath, function (err) {
             if (err) {
                 response.status(500).json({

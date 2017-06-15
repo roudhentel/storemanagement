@@ -30,6 +30,6 @@ module.exports = mongoose.model('Store', new Schema({
     Competitors: [],
     Community: [],
     Revenue: [],
-    SalesStat: [],
-    DailySales: []
+    Sales: [],
+    Transaction: []
 }));

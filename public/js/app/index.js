@@ -22,6 +22,7 @@ document.write('<script src="contents/revenue/add-sales-revenue.js"></script>');
 document.write('<script src="contents/gallery/controller.js"></script>');
 document.write('<script src="contents/gallery/view-image.js"></script>');
 document.write('<script src="contents/gallery/album-dialog.js"></script>');
+document.write('<script src="contents/gallery/picture-dialog.js"></script>');
 
 // directives
 document.write('<script src="contents/dialog/directive.js"></script>');

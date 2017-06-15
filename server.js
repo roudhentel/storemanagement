@@ -11,6 +11,21 @@ let config = require('./server/db/config');
 let PORT = process.env.port || 3100;
 let http = require('http').Server(app);
 
+// let keypress = require('keypress');
+
+// keypress(process.stdin);
+// process.stdin.on('keypress', function (ch, key) {
+//     console.log(key);
+// });
+
+var stdin = process.stdin;
+stdin.setRawMode(true);
+
+stdin.on('keypress', function (chunk, key) {
+    process.stdout.write('Get Chunk: ' + chunk + '\n');
+    if (key && key.ctrl && key.name == 'c') process.exit();
+})
+
 // for file upload
 app.use(fileUpload());
 

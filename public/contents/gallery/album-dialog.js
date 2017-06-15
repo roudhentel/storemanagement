@@ -17,8 +17,12 @@ mainApp.controller("albumDialogCtrl", function ($scope, $http, $mdDialog, Dialog
     s.save = (isFormValid, ev) => {
         if (!isFormValid) return;
 
+        if (!s.gbl.selectedStore) {
+            dialogSvc.showAlert("Information", "Select a store first", "Ok", true, "parent", ev);
+            return;
+        }
 
-        if (isEdit) {
+        if (s.isEdit) {
             $http({
                 method: "PUT",
                 url: "/api/filesystem/editAlbum",

@@ -85,5 +85,15 @@ mainApp.controller("galleryCtrl", function ($scope, $http, Dialog) {
         });
     }
 
+    s.addPictures = (ev, album) => {
+        s.newHeader = "Add Pictures";
+        s.selectedAlbum = album.name;
+        dialogSvc.showDialog("pictureDialogCtrl", s, "contents/gallery/picture-dialog.html", true, "parent", ev).then((res) => {
+            if (res) {
+                album.files.push.apply(album.files, res);
+            }
+        });
+    }
+
     s.getAll();
 });
