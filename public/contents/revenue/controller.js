@@ -169,6 +169,7 @@ mainApp.controller("revenueCtrl", function ($scope, Dialog) {
 
             if (s.listDailySale.length > 0) {
                 var data = [];
+                var totalSales
                 s.listDailySale.forEach((obj, idx) => {
                     data.push(obj.TotalSales);
                     var ndate = new Date(obj.Date);
