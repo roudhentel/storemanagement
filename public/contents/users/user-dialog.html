@@ -14,7 +14,7 @@
         </div>
         <div class="data-row" ng-if="!isEdit">
             <label>Verify Password:</label>
-            <input type="password" class="form-control" ng-model="confirmPassword" required />
+            <input type="password" class="form-control" ng-model="userDialogVar.confirmPassword" required />
         </div>
         <div class="data-row">
             <label>Role:</label>
@@ -23,7 +23,7 @@
         <div class="box-footer">
             <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
             <button type="button" class="btn" ng-click="cancel();">Cancel</button>
-            <button type="submit" class="btn btn-success" ng-click="save($event, userFormDialog.$valid, confirmPassword);">Save</button>
+            <button type="submit" class="btn btn-success" ng-click="save($event, userFormDialog.$valid);">Save</button>
         </div>
     </form>
 </dialog-template>

@@ -13,16 +13,20 @@ mainApp.controller("userDialogCtrl", function ($scope, $http, $mdDialog, Dialog)
         RoleId: ""
     };
 
+    s.userDialogVar = {
+        confirmPassword: ""
+    };
+
     s.isEdit = s.header.toLowerCase().indexOf('edit') > -1;
 
     if (s.isEdit) {
         s.user = JSON.parse(JSON.stringify(s.selectedUser));
     }
 
-    s.save = (ev, isFormValid, confirmPassword) => {
+    s.save = (ev, isFormValid) => {
         if (!isFormValid) return;
 
-        if (s.user.Password !== confirmPassword && !s.isEdit) {
+        if (s.user.Password !== s.userDialogVar.confirmPassword && !s.isEdit) {
             dialogSvc.showAlert("Information", "Password did not match.", "Ok", true, "parent", ev);
             return;
         }
