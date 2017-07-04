@@ -1,0 +1,29 @@
+<dialog-template title="{{header}}" add-class="user-dialog">
+    <form name="userFormDialog">
+        <div class="data-row">
+            <label>Fullname:</label>
+            <input type="text" class="form-control" ng-model="user.Fullname" required />
+        </div>
+        <div class="data-row">
+            <label>Username:</label>
+            <input type="text" class="form-control" ng-model="user.Username" required />
+        </div>
+        <div class="data-row" ng-if="!isEdit">
+            <label>Password:</label>
+            <input type="password" class="form-control" ng-model="user.Password" required />
+        </div>
+        <div class="data-row" ng-if="!isEdit">
+            <label>Verify Password:</label>
+            <input type="password" class="form-control" ng-model="userDialogVar.confirmPassword" required />
+        </div>
+        <div class="data-row">
+            <label>Role:</label>
+            <select class="form-control" required ng-model="user.RoleId" ng-options="r['_id'] as r.Name for r in listRole"></select>
+        </div>
+        <div class="box-footer">
+            <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+            <button type="button" class="btn" ng-click="cancel();">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-click="save($event, userFormDialog.$valid);">Save</button>
+        </div>
+    </form>
+</dialog-template>

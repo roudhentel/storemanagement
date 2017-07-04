@@ -1,0 +1,171 @@
+<div class="overview">
+    <form name="formSearch">
+        <div class="search-div-input">
+            <label>Store Number: </label>
+            <input type="text" id="txtStoreNo" class="form-control" placeholder="Store number" ng-model="search.storeno" />
+            <label>Store Name: </label>
+            <input type="text" id="txtStoreName" class="form-control" placeholder="Store name" ng-model="search.storename" />
+        </div>
+        <div class="search-div-command">
+            <button class="btn btn-primary" type="submit" ng-click="updateSearch()">Update Search</button>
+            <button class="btn btn-warning">Edit</button>
+            <button class="btn" ng-click="clearSearch();">Clear</button>
+        </div>
+    </form>
+
+    <div class="content-body">
+        <div class="flex-row">
+            <div class="box" ng-if="gbl.selectedStore">
+                <!-- store details -->
+                <div class="box-body">
+                    <div class="data-row">
+                        <span>Address:</span>
+                        <label>
+                            {{gbl.selectedStore.Details.Address1}} {{gbl.selectedStore.Details.Address2}}
+                            {{gbl.selectedStore.Details.City}} {{gbl.selectedStore.Details.Province}}
+                        </label>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Area:</span>
+                            <label>{{gbl.selectedStore.Details.Area}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>Operating Hours:</span>
+                            <label>{{gbl.selectedStore.Details.OperatingHours}}</label>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Floor Area:</span>
+                            <label>{{gbl.selectedStore.Details.FloorArea}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>Store Head:</span>
+                            <label>{{gbl.selectedStore.Details.StoreHead}}</label>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Classification:</span>
+                            <label>{{gbl.selectedStore.Details.Classification}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>Contact Number:</span>
+                            <label>{{gbl.selectedStore.Details.ContactNo}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box" ng-if="gbl.selectedStore">
+                <!-- store details -->
+                <div class="box-body">
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Region:</span>
+                            <label>{{gbl.selectedStore.Details.Region}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>No. of Yrs:</span>
+                            <label>{{gbl.selectedStore.Details.NoOfYears}}</label>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Parking Slot:</span>
+                            <label>{{gbl.selectedStore.Details.ParkingSlot}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>No. of Personel:</span>
+                            <label>{{gbl.selectedStore.Details.NoOfPersonel}}</label>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Type:</span>
+                            <label>{{gbl.selectedStore.Details.Type}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>Annniversary Date:</span>
+                            <label>{{gbl.selectedStore.Details.AnnivDate}}</label>
+                        </div>
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <span>Delivery #:</span>
+                            <label>{{gbl.selectedStore.Details.DeliveryNo}}</label>
+                        </div>
+                        <div class="data-col">
+                            <span>Delivery Service:</span>
+                            <label>{{gbl.selectedStore.Details.Delivery ? 'Yes' : 'No'}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="box" ng-if="gbl.selectedStore">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Quick Facts</h3>
+                </div>
+                <div class="box-body">
+                    <ul>
+                        <li ng-repeat="qf in gbl.selectedStore.QuickFacts">{{qf}}</li>
+                        <!--<li>Situated in a high residential but has medium to high commercialized area</li>
+                        <li>2.53 Sq. Km. Total Land Area</li>
+                        <li>5th largest in terms of population</li>
+                        <li>Total House Holds - 3,830</li>
+                        <li>Located in Barangay Sto. Domingo, Angeles City</li>
+                        <li>Has a length of 2.74 Kilometers</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="box" ng-if="gbl.selectedStore">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Major Establishments</h3>
+                </div>
+                <div class="box-body">
+                    <ul>
+                        <li ng-repeat="me in gbl.selectedStore.MajorEstablishments">{{me}}</li>
+                        <!--<li>Sacred Heart Medical Center</li>
+                        <li>Metrobank</li>
+                        <li>Super8</li>
+                        <li>7eleven</li>
+                        <li>Savemore</li>
+                        <li>Zambank</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="box" ng-if="gbl.selectedStore">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Competitors</h3>
+                </div>
+                <div class="box-body">
+                    <ul>
+                        <li ng-repeat="c in gbl.selectedStore.Competitors">{{c}}</li>
+                        <!--<li>Talipapa</li>
+                        <li>Savemore</li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="box" ng-if="gbl.selectedStore">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Community</h3>
+                </div>
+                <div class="box-body">
+                    <ul>
+                        <li ng-repeat="cm in gbl.selectedStore.Community">{{cm}}</li>
+                        <!--<li>Sacred Heart Medical Center</li>
+                        <li>Metrobank</li>
+                        <li>Super8</li>
+                        <li>7eleven</li>
+                        <li>Savemore</li>
+                        <li>Zambank</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

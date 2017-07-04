@@ -1,0 +1,37 @@
+<div class="role-page">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Roles</h3>
+        </div>
+        <div class="box-body">
+            <div class="role-commands">
+                <label>Search:</label>
+                <input type="text" class="form-control" ng-model="searchTxt">
+                <button class="btn btn-success" ng-click="addRole($event)">Add</button>
+            </div>
+            <div class="role-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Role Name</th>
+                            <th>Permission</th>
+                            <th>Create Date & Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="r in listRole | filter: searchTxt">
+                            <td>
+                                <a ng-click="editRole($event, r, $index);"><i class="fa fa-pencil"></i></a>
+                                <a ng-click="deleteRole($event, r, $index);"><i class="fa fa-trash"></i></a>
+                            </td>
+                            <td>{{r.Name}}</td>
+                            <td>{{parsePermission(r)}}</td>
+                            <td>{{r.CreateDate | date: 'dd-MM-yyyy hh:mm:ss a'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'HelveticaLT57';
+    src: url("font/HelveticaNeueLTStd-Cn.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: HelveticaLT57 !important;
+
+    .view-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 3px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6, input, select, button, legend {
+    font-family: HelveticaLT57;
+}

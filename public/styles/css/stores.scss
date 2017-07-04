@@ -1,0 +1,138 @@
+.store-page {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+        height: 95%;
+        margin: 10px auto 0 auto;
+
+        .box-body {
+            height: 100%;
+            overflow: auto;
+
+            .store-commands {
+                display: flex;
+                height: 10%;
+                align-items: center;
+                min-height: 50px;
+                max-height: 70px;
+
+                label {
+                    width: 20%;
+                    min-width: 60px;   
+                    max-width: 100px;
+                }
+
+                input[type="text"].form-control {
+                    width: 30%;
+                    margin-right: 10px;
+                }
+            }
+
+            .store-table {
+                display: flex;
+                height: 90%;
+                max-height: 700px;
+                overflow: auto;
+
+                table {
+                    width: 100%;
+                    thead {
+                        tr {
+                            th {
+                                padding: 5px;
+                                height: 40px;
+                                border: 1px solid #e0e0e0;
+                                text-align: center;
+
+                                &:nth-child(1), &:nth-child(2) {
+                                    min-width: 100px;
+                                    width: 5%;
+                                }
+
+                                &:nth-child(3), &:nth-child(4) {
+                                    min-width: 200px;
+                                    width: 20%;
+                                }
+
+                                &:nth-child(5), &:nth-child(7) {
+                                    min-width: 100px;
+                                    width: 10%;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                padding: 5px;
+                                height: 40px;
+                                border: 1px solid #e0e0e0;
+
+                                &:nth-child(1) {
+                                    text-align: center;
+
+                                    a {
+                                        cursor: pointer;
+                                        &:not(:last-child) {
+                                            margin-right: 7px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+.store-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+
+    .data-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+
+        label {
+            width: 30%;
+        }
+
+        input[type="text"], input[type="password"], select {
+            width: 70%;
+        }
+    }
+
+    .box-footer {
+        margin-top: 10px;
+        text-align: right;
+        padding: 5px 0 0 0;
+        
+        md-progress-linear {
+            margin-bottom: 5px !important;
+
+            .md-container {
+                background-color: #c9e9c5;
+            }
+            .md-bar {
+                background-color: #00a65a;
+            }
+        }
+
+        button:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}

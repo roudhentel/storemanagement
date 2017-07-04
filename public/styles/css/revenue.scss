@@ -1,0 +1,206 @@
+.revenue-page {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+
+    .chart {
+        width: 95%;
+        margin: 10px auto 0 auto;
+
+        .commands {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            label {
+                margin-right: 15px;
+            }
+
+            select {
+                width: 200px;
+                margin-right: 5px;
+            }
+
+            button:not(:last-child) {
+                margin-right: 5px;
+            }
+        }
+
+        ul.line-legend {
+            list-style: none;
+            padding: 0;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                div.legend {
+                    margin-right: 10px;
+                    height: 10px;
+                    width: 10px;
+                }
+            }
+        }
+
+        div.legend table {
+            width: 100%;
+            margin-top: 15px;
+
+            tr {
+                th, td {
+                    padding: 3px;
+                    position: relative;
+                    label {
+                        width: 15px;
+                        height: 10px;
+                        position: absolute;
+                        top: 9px;
+                    }
+
+                    span {
+                        margin-left: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .daily-sales {
+        width: 95%;
+        margin: 10px auto 0 auto;
+
+        .daily-sales-body {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            margin: 10px auto;
+
+            .part-1 {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 30%;
+
+                .remarks, .avg-daily-sales {
+                    height: 50%;
+                    width: 100%;
+                }
+
+                .remarks {
+                    .box-body {
+                        max-height: 200px;
+                        overflow: auto;
+
+                        .list-remarks {
+                            list-style: none;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
+                .avg-daily-sales .box-body {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    label {
+                        font-size: 60px;
+                        font-weight: normal;
+                    }
+
+                    div.label {
+                        background-color: #00c56b;
+                        border-radius: 5px;
+                        height: 32px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .part-2 {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                width: 70%;
+
+                .line-chart, .bar-chart {
+                    height: 50%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    canvas {
+                        width: 100% !important;
+                    }
+                }
+
+                .line-chart {
+                    margin-left: 10px;
+                    .search {
+                        display: flex;
+                        flex-direction: row;
+
+                        label {
+                            margin: 0 5px;
+                        }
+
+                        button {
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
+}
+
+
+.edit-sales-revenue-dialog, .add-sales-revenue-dialog {
+    div.legend table {
+        width: 100%;
+        margin-top: 15px;
+        border: 1px solid #afafaf;
+
+        tr {
+            th, td {
+                padding: 3px;
+                position: relative;
+                border-bottom: 1px dashed #dedede;
+
+                label {
+                    width: 15px;
+                    height: 10px;
+                    position: absolute;
+                    top: 9px;
+                }
+
+                span {
+                    margin-left: 22px;
+                }
+            }
+            th {
+                padding: 5px;
+            }
+
+            td {
+                input[type="number"] {
+                    width: 85px;
+                }
+            }
+        }
+    }
+
+    div.box-footer {
+        margin-top: 15px;
+        padding: 5px 0 0 0;
+        text-align: right;
+    }
+}
